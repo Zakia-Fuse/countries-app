@@ -1,23 +1,25 @@
-import React from 'react'
-import NavBar from './components/NavBar'
-import Todo from './components/Todo'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import AboutScreen from "./screens/AboutScreen";
+import ContactScreen from "./screens/ContactScreen";
+import DetailsScreen from "./screens/DetailsScreen";
+import HomeScreen from "./screens/HomeScreen";
+import Header from "./components/Header";
 
 function App() {
-
-  let title="My activities to do for the week"
   return (
-    <>
-    <NavBar title={title}/>
-    <main>      
-    <Todo title="learning react"datetime="15th August 2022"/>
-    <Todo title="learning react"datetime="15th August 2022"/>
-    <Todo title="learning react"datetime="15th August 2022"/>
-    <Todo title="learning react"datetime="15th August 2022"/>
-    <Todo title="learning react"datetime="15th August 2022"/>
-    
-    </main>
-    </>
-  )
+    <BrowserRouter>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/about" element={<AboutScreen />} />
+          <Route path="/contact" element={<ContactScreen />} />
+          <Route path="/details:name" element={<DetailsScreen />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
